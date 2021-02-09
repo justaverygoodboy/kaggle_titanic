@@ -16,10 +16,7 @@ for i, data_tuple in enumerate(test, 0):
     test_d = test_d.to(device)
     net_load = net_load.to(device)
     out = net_load(test_d)
-    if out<0.5:
-        out = 0
-    else:
-        out = 1
+    out = 1 if out>0.5 else 0
     if out == val_sur[i]:
         ri_count += 1
 items = val.shape[0]
